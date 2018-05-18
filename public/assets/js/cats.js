@@ -1,7 +1,8 @@
 // // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(document).ready(() => {
   var a = $('.search').data("id")
-  console.log(a)
+  if(a == undefined) $("#viewByCat").hide()
+
   $('.search').attr('href', '/category/'+a)
 })
 
@@ -28,28 +29,6 @@ $(function() {
       }
     );
   });
-
-  // $(function () {  
-  //   $(".search").on('click', function (event) {  
-  //     // var cat = {
-  //       cat =  $(this).data("id")
-        
-  //       $(this).attr('href', "/category/"+cat)
-
-  //     // }
-  //     // console.log(cat.category)
-  //     $.ajax("/category/"+cat, {
-  //       type: "GET",
-  //       // data: cat
-  //     }).then(
-  //       function() {
-  //         // Reload the page to get the updated list
-  //         location.reload("category");
-  //       }
-  //     );
-  //     // })
-  //   })
-  // })
 
   $(function () {  
      $(".remove-task").on('click', function(event) {

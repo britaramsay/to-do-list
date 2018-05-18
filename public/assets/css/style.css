@@ -1,7 +1,17 @@
+.btn {
+  color: #474746;
+  background: rgb(201, 201, 201)
+
+}
+
 li {
   padding: 5px;
   margin: 5px;
-  background: #faebd7;
+  background: #474746;
+}
+
+li h4 {
+  color: rgb(201, 201, 201)
 }
 
 .label {

@@ -1,40 +1,58 @@
-<h1>To do List</h1>
+<div class="container">
+<h1 style="margin-left:40px;">To do List</h1>
 
-<h2>Unfinished Tasks</h2>
+<a class="btn" href="/" style="margin-left:40px;"><button class="viewAll btn">View all Categories</button></a>
 
-<button class="viewAll btn"><a href="/">View all Categories</a></button>
+<h2 style="margin-left:40px;">Unfinished</h2>
 
-<ul>
+<ul style="list-style-type:none">
   {{#each list}}
     {{#unless done}}
       <li>
-        {{item_name}}
-
-        <button class="change-complete" data-id="{{id}}" data-done="{{done}}">
-          Opps, it's not really done.
-        </button>
-        <button class="remove-task" data-id="{{id}}">
-          X
-        </button>
-      </li>    {{/unless}}
+        <div class="row" id="items">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"  style="float:left;">
+            <h4 style="margin-left:20px;">{{item_name}}</h4>
+          </div>
+          <div class="col-md-2"  style="float:left;">
+            <h4>{{#if category}}Category: {{/if}}<span style="color:red;important!">{{category}}</h4></span>
+          </div>
+          <div style="float:right;margin-right:20px;">
+            <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
+              Complete <span class="glyphicon glyphicon-ok"></span>
+            </button>
+            <button class="remove-task btn" data-id="{{id}}">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </div>
+        </div>
+      </li>    
+    {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Completed Tasks</h2>
+<h2 style="margin-left:40px;">Completed</h2>
 
-<ul>
+<ul style="list-style-type:none">
   {{#each list}}
     {{#if done}}
       <li>
-        {{item_name}}
-
-        <button class="change-complete" data-id="{{id}}" data-done="{{done}}">
-          Opps, it's not really done.
-        </button>
-        <button class="remove-task" data-id="{{id}}">
-          X
-        </button>
-      </li>
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"  style="float:left;">
+            <h4 style="margin-left:20px;">{{item_name}}</h4>
+          </div>
+          <div class="col-md-2"  style="float:left;">
+            <h4>{{#if category}}Category: {{/if}}<span style="color:red;">{{category}}</h4></span>
+          </div>
+          <div style="float:right;margin-right:20px;">
+            <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
+              More to Do <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <button class="remove-task btn" data-id="{{id}}">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </div>
+        </div>
+      </li>    
     {{/if}}
   {{/each}}
 </ul>

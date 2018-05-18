@@ -1,50 +1,71 @@
-<h1>To do List</h1>
 
-<h2>Unfinished Tasks</h2>
+<div class="container">
+<h1 style="margin-left:40px;">To do List</h1>
 
+<h3 id="viewByCat" style="margin-left:40px;">View Tasks by Category</h3>
 <ul>
   {{#each cats}}
-    <a class="search btn" data-id={{cat}}>{{cat}}</a>
+    <a class="search btn" data-id={{cat}}><button class="btn">{{cat}}</button></a>
   {{/each}}
 </ul>
 
-<ul>
+<h2 style="margin-left:40px;">Unfinished</h2>
+
+
+<ul style="list-style-type:none">
   {{#each list}}
     {{#unless done}}
       <li>
-        {{item_name}}{{category}}
-
-        <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
-          Opps, it's not really done.
-        </button>
-        <button class="remove-task btn" data-id="{{id}}">
-          X
-        </button>
-      </li>    {{/unless}}
+        <div class="row" id="items">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"  style="float:left;">
+            <h4 style="margin-left:20px;">{{item_name}}</h4>
+          </div>
+          <div class="col-md-2"  style="float:left;">
+            <h4>{{#if category}}Category: {{/if}}<span style="color:red;important!">{{category}}</h4></span>
+          </div>
+          <div style="float:right;margin-right:20px;">
+            <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
+              Complete <span class="glyphicon glyphicon-ok"></span>
+            </button>
+            <button class="remove-task btn" data-id="{{id}}">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </div>
+        </div>
+      </li>    
+    {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Completed Tasks</h2>
+<h2 style="margin-left:40px;">Completed</h2>
 
-<ul>
+<ul style="list-style-type:none">
   {{#each list}}
     {{#if done}}
       <li>
-        {{item_name}}{{category}}
-
-        <button class="change-complete" data-id="{{id}}" data-done="{{done}}">
-          Opps, it's not really done.
-        </button>
-        <button class="remove-task" data-id="{{id}}">
-          X
-        </button>
-      </li>
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"  style="float:left;">
+            <h4 style="margin-left:20px;">{{item_name}}</h4>
+          </div>
+          <div class="col-md-2"  style="float:left;">
+            <h4>{{#if category}}Category: {{/if}}<span style="color:red;">{{category}}</h4></span>
+          </div>
+          <div style="float:right;margin-right:20px;">
+            <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
+              More to Do <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <button class="remove-task btn" data-id="{{id}}">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </div>
+        </div>
+      </li>    
     {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a Task</h2>
-<form class="create-form">
+<h2 style="margin-left:40px;">Add a Task</h2>
+<form class="create-form" style="margin-left:40px;">
 
   <div class="form-group row">
     <div class="col-xs-8">
@@ -72,9 +93,10 @@
 
   <div class="form-group">
     <label for="done">Done?</label><br>
-    <input type="radio" name="done" value="1" checked> Done!<br>
-    <input type="radio" name="done" value="0"> Unfinished
+    <input type="radio" name="done" value="0" checked> Unfinished<br>
+    <input type="radio" name="done" value="1"> Done!
   </div>
 
   <button type="submit">Add a Task</button>
 </form>
+</div>
