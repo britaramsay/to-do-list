@@ -1,0 +1,80 @@
+<h1>To do List</h1>
+
+<h2>Unfinished Tasks</h2>
+
+<ul>
+  {{#each cats}}
+    <a class="search btn" data-id={{cat}}>{{cat}}</a>
+  {{/each}}
+</ul>
+
+<ul>
+  {{#each list}}
+    {{#unless done}}
+      <li>
+        {{item_name}}{{category}}
+
+        <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
+          Opps, it's not really done.
+        </button>
+        <button class="remove-task btn" data-id="{{id}}">
+          X
+        </button>
+      </li>    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Completed Tasks</h2>
+
+<ul>
+  {{#each list}}
+    {{#if done}}
+      <li>
+        {{item_name}}{{category}}
+
+        <button class="change-complete" data-id="{{id}}" data-done="{{done}}">
+          Opps, it's not really done.
+        </button>
+        <button class="remove-task" data-id="{{id}}">
+          X
+        </button>
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Task</h2>
+<form class="create-form">
+
+  <div class="form-group row">
+    <div class="col-xs-8">
+    <label for="ca">Task Name:</label>
+    <input class="form-control" type="text" id="ca" name="name">
+    </div>
+  </div>
+
+  <label for="category">Choose Category</label>
+  <div class="form-group row">
+    <div class="col-xs-4">
+      <select class="form-control" id="category" aria-placeholder="hi">
+        <option></option>
+        {{#each cats}}
+          <option>{{cat}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-4">
+        <input class="form-control" type="text" name="newCat" id="newCategory" placeholder="Add a new category">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="done">Done?</label><br>
+    <input type="radio" name="done" value="1" checked> Done!<br>
+    <input type="radio" name="done" value="0"> Unfinished
+  </div>
+
+  <button type="submit">Add a Task</button>
+</form>

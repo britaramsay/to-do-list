@@ -1,0 +1,40 @@
+<h1>To do List</h1>
+
+<h2>Unfinished Tasks</h2>
+
+<button class="viewAll btn"><a href="/">View all Categories</a></button>
+
+<ul>
+  {{#each list}}
+    {{#unless done}}
+      <li>
+        {{item_name}}
+
+        <button class="change-complete" data-id="{{id}}" data-done="{{done}}">
+          Opps, it's not really done.
+        </button>
+        <button class="remove-task" data-id="{{id}}">
+          X
+        </button>
+      </li>    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Completed Tasks</h2>
+
+<ul>
+  {{#each list}}
+    {{#if done}}
+      <li>
+        {{item_name}}
+
+        <button class="change-complete" data-id="{{id}}" data-done="{{done}}">
+          Opps, it's not really done.
+        </button>
+        <button class="remove-task" data-id="{{id}}">
+          X
+        </button>
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
