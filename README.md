@@ -20,9 +20,7 @@ CREATE TABLE `list` (
   `done` BOOLEAN
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 ```
-```
 * Run `node server.js`
----
 #### Tools used in this project
 * [npm my-sql](https://www.npmjs.com/package/mysql)
 * [npm express](https://www.npmjs.com/package/express)
