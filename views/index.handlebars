@@ -1,102 +1,109 @@
 
 <div class="container">
-<h1 style="margin-left:40px;">To do List</h1>
+  <h1 style="margin-left:40px;">To do List</h1>
 
-<h3 id="viewByCat" style="margin-left:40px;">View Tasks by Category</h3>
-<ul>
-  {{#each cats}}
-    <a class="search btn" data-id={{cat}}><button class="btn">{{cat}}</button></a>
-  {{/each}}
-</ul>
+  <h3 id="viewByCat" style="margin-left:40px;">View Tasks by Category</h3>
+  <ul>
+    {{#each cats}}
+      <a class="search btn" data-id={{cat}}><button class="btn">{{cat}}</button></a>
+    {{/each}}
+  </ul>
 
-<h2 style="margin-left:40px;">Unfinished</h2>
+  <div class="row">
+    <div class="col-md-8" style="float: left;">
 
+      <h2 style="margin-left:40px;">Unfinished</h2>
 
-<ul style="list-style-type:none">
-  {{#each list}}
-    {{#unless done}}
-      <li>
-        <div class="row" id="items">
-          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"  style="float:left;">
-            <h4 style="margin-left:20px;">{{item_name}}</h4>
-          </div>
-          <div class="col-md-2"  style="float:left;">
-            <h4>{{#if category}}Category: {{/if}}<span style="color:red;important!">{{category}}</h4></span>
-          </div>
-          <div style="float:right;margin-right:20px;">
-            <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
-              Complete <span class="glyphicon glyphicon-ok"></span>
-            </button>
-            <button class="remove-task btn" data-id="{{id}}">
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
-          </div>
-        </div>
-      </li>    
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2 style="margin-left:40px;">Completed</h2>
-
-<ul style="list-style-type:none">
-  {{#each list}}
-    {{#if done}}
-      <li>
-        <div class="row">
-          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"  style="float:left;">
-            <h4 style="margin-left:20px;">{{item_name}}</h4>
-          </div>
-          <div class="col-md-2"  style="float:left;">
-            <h4>{{#if category}}Category: {{/if}}<span style="color:red;">{{category}}</h4></span>
-          </div>
-          <div style="float:right;margin-right:20px;">
-            <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
-              More to Do <span class="glyphicon glyphicon-remove"></span>
-            </button>
-            <button class="remove-task btn" data-id="{{id}}">
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
-          </div>
-        </div>
-      </li>    
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2 style="margin-left:40px;">Add a Task</h2>
-<form class="create-form" style="margin-left:40px;">
-
-  <div class="form-group row">
-    <div class="col-xs-8">
-    <label for="ca">Task Name:</label>
-    <input class="form-control" type="text" id="ca" name="name">
-    </div>
-  </div>
-
-  <label for="category">Choose Category</label>
-  <div class="form-group row">
-    <div class="col-xs-4">
-      <select class="form-control" id="category" aria-placeholder="hi">
-        <option></option>
-        {{#each cats}}
-          <option>{{cat}}</option>
+      <ul style="list-style-type:none">
+        {{#each list}}
+          {{#unless done}}
+            <li>
+              <div class="row" id="items">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"  style="float:left;">
+                  <h4 style="margin-left:20px;">{{item_name}}</h4>
+                </div>
+                <div class="col-md-4"  style="float:left;">
+                  <h4>{{#if category}}Category: {{/if}}<span style="color:red;important!">{{category}}</h4></span>
+                </div>
+                <div style="float:right;margin-right:20px;">
+                  <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
+                    Complete <span class="glyphicon glyphicon-ok"></span>
+                  </button>
+                  <button class="remove-task btn" data-id="{{id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                </div>
+              </div>
+            </li>    
+          {{/unless}}
         {{/each}}
-      </select>
+      </ul>
+
+      <h2 style="margin-left:40px;">Completed</h2>
+
+      <ul style="list-style-type:none">
+        {{#each list}}
+          {{#if done}}
+            <li>
+              <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"  style="float:left;">
+                  <h4 style="margin-left:20px;">{{item_name}}</h4>
+                </div>
+                <div class="col-md-4"  style="float:left;">
+                  <h4>{{#if category}}Category: {{/if}}<span style="color:red;">{{category}}</h4></span>
+                </div>
+                <div style="float:right;margin-right:20px;">
+                  <button class="change-complete btn" data-id="{{id}}" data-done="{{done}}">
+                    Unfinished <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+                  <button class="remove-task btn" data-id="{{id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                </div>
+              </div>
+            </li>    
+          {{/if}}
+        {{/each}}
+      </ul>
     </div>
-    <div class="form-group">
-      <div class="col-xs-4">
-        <input class="form-control" type="text" name="newCat" id="newCategory" placeholder="Add a new category">
-      </div>
+
+    <div class="col-md-4" style="float: right">
+
+      <h2 style="margin-left:40px;">Add a Task</h2>
+      <form class="create-form" style="margin-left:40px;">
+
+        <div class="form-group row">
+          <div class="col-xs-12">
+          <label for="ca">Task Name:</label>
+          <input class="form-control" type="text" id="ca" name="name">
+          </div>
+        </div>
+
+        <label for="category">Choose Category</label>
+        <div class="form-group row">
+          <div class="col-xs-5">
+            <select class="form-control" id="category" aria-placeholder="hi">
+              <option></option>
+              {{#each cats}}
+                <option>{{cat}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-7">
+              <input class="form-control" type="text" name="newCat" id="newCategory" placeholder="Add a new category">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="done">Done?</label><br>
+          <input type="radio" name="done" value="0" checked> Unfinished<br>
+          <input type="radio" name="done" value="1"> Done!
+        </div>
+
+        <button class="btn" type="submit">Add a Task</button>
+      </form>
     </div>
   </div>
-
-  <div class="form-group">
-    <label for="done">Done?</label><br>
-    <input type="radio" name="done" value="0" checked> Unfinished<br>
-    <input type="radio" name="done" value="1"> Done!
-  </div>
-
-  <button type="submit">Add a Task</button>
-</form>
 </div>

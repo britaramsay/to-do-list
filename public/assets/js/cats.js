@@ -1,10 +1,14 @@
 // // Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(document).ready(() => {
-  var a = $('.search').data("id")
+$(function() {
+  $('.search').on('click', function (param) {
+  var a = $(this).data("id")
+  console.log(a)
   if(a == undefined) $("#viewByCat").hide()
 
   $('.search').attr('href', '/category/'+a)
 })
+})
+
 
 
 $(function() {
